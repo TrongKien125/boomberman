@@ -193,16 +193,16 @@ public class Main extends Application {
             @Override
             public void handle(KeyEvent event) {
                 boolean t = false;
-                if (event.getCode() == KeyCode.A) {
+                if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT) {
                     player.get(0).setArrow(1);
                     t = true;
-                } else if (event.getCode() == KeyCode.W) {
+                } else if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP) {
                     player.get(0).setArrow(2);
                     t = true;
-                } else if (event.getCode() == KeyCode.D) {
+                } else if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT) {
                     t = true;
                     player.get(0).setArrow(0);
-                } else if (event.getCode() == KeyCode.S) {
+                } else if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN) {
                     t = true;
                     player.get(0).setArrow(3);
                 } else if (event.getCode() == KeyCode.SPACE) {
@@ -282,6 +282,7 @@ public class Main extends Application {
         list_brick.clear();
         player.clear();
         portal.clear();
+        list_oneal.clear();
         bombItemList.clear();
         flameItemList.clear();
         speedItemList.clear();
