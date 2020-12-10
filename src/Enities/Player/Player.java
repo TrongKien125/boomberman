@@ -6,6 +6,7 @@ import Enities.PowerUp.BombItem;
 import Enities.PowerUp.FlameItem;
 import Enities.PowerUp.SpeedItem;
 import Enities.Rectangle;
+import Enities.Sound;
 import Enities.ti.Brick;
 import Enities.ti.Portal;
 import Enities.ti.Wall;
@@ -15,13 +16,17 @@ import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.List;
 
 public class Player extends Mob {
+    Sound sound = new Sound();
     public Convention convention = new Convention();
     private double speed = 5.0;
     private int arrow;
@@ -115,16 +120,25 @@ public class Player extends Mob {
             case 1:
                 break;
             case 2:
+                Media sound1 = new Media(new File(sound.PowerUp).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound1);
+                mediaPlayer.play();
                 number_bomb ++;
                 move();
                 setRectangle(nextRectangle);
                 break;
             case 3:
+                Media sound2 = new Media(new File(sound.PowerUp).toURI().toString());
+                MediaPlayer mediaPlayer1 = new MediaPlayer(sound2);
+                mediaPlayer1.play();
                 lenght_flame ++;
                 move();
                 setRectangle(nextRectangle);
                 break;
             case 4:
+                Media sound3 = new Media(new File(sound.PowerUp).toURI().toString());
+                MediaPlayer mediaPlayer2 = new MediaPlayer(sound3);
+                mediaPlayer2.play();
                 speed = 10.0;
                 move();
                 setRectangle(nextRectangle);

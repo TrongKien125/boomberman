@@ -4,6 +4,7 @@ import Enities.Convention;
 import Enities.Enity;
 import Enities.Mod.Balloom;
 import Enities.Player.Player;
+import Enities.Sound;
 import Enities.ti.Brick;
 import Enities.ti.Wall;
 import javafx.animation.KeyFrame;
@@ -12,14 +13,18 @@ import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Bomb extends Enity {
+    Sound sound = new Sound();
     private int type;
     public Convention convention =  new Convention();
     private int length_flame;
@@ -103,6 +108,9 @@ public class Bomb extends Enity {
             }
             imageView.setImage(image3);
             if(a.get() == 3 ) {
+                Media sound1 = new Media(new File(sound.BOMB).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound1);
+                mediaPlayer.play();
                 imageView.setX(1000);
                 imageView.setY(1000);
                 Explosion explosion = new Explosion(getX(),getY(),length_flame);

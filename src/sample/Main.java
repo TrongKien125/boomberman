@@ -3,6 +3,7 @@ import Enities.Mod.Oneal;
 import Enities.PowerUp.BombItem;
 import Enities.PowerUp.FlameItem;
 import Enities.PowerUp.SpeedItem;
+import Enities.Sound;
 import Enities.ti.Brick;
 import Enities.ti.Grass;
 import Enities.ti.Portal;
@@ -22,6 +23,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -32,6 +35,7 @@ import java.util.*;
 import java.util.List;
 
 public class Main extends Application {
+    Sound sound1 = new Sound();
     Convention convention = new Convention();
     Stage stage = new Stage();
     Group root = new Group();
@@ -50,7 +54,7 @@ public class Main extends Application {
     List<FlameItem> flameItemList = new ArrayList<>();
     List<Oneal> list_oneal = new ArrayList<>();
     private int level = 0;
-    String[] strMap = {"map.txt", "level2.txt", "level3.txt", "level4.txt", "Level5.txt"};
+    String[] strMap = {"Map/level1.txt", "Map/level2.txt", "Map/level3.txt", "Map/level4.txt", "Map/Level5.txt"};
 
     public void renderMap() {
         try {
@@ -165,6 +169,9 @@ public class Main extends Application {
             }
         }
         if(list_bomb.size() < player.get(0).getNumber_bomb() && kt){
+            Media sound = new Media(new File(sound1.SetBomb).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
             list_bomb.add(bomb);
             bomb.setLength_flame(player.get(0).getLenght_flame());
             bomb.renderBomb(root, list_wall, list_brick, list_balloom, player);
@@ -291,8 +298,16 @@ public class Main extends Application {
                     timer.stop();
                     Overgame();
                     player.get(0).playerDead();
+                    Media sound = new Media(new File(sound1.Player_Dead).toURI().toString());
+                    MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                    mediaPlayer.play();
                 }
-                if (list_balloom.size() == 0 && player.get(0).getRectangle().overlaps(portal.get(0).getRectangle())) LevelUP();
+                if (list_balloom.size() == 0 && player.get(0).getRectangle().overlaps(portal.get(0).getRectangle())) {
+                    Media sound = new Media(new File(sound1.LevelUp).toURI().toString());
+                    MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                    mediaPlayer.play();
+                    LevelUP();
+                }
             }}));
     timer.play();
     }
