@@ -174,7 +174,7 @@ public class Main extends Application {
             mediaPlayer.play();
             list_bomb.add(bomb);
             bomb.setLength_flame(player.get(0).getLenght_flame());
-            bomb.renderBomb(root, list_wall, list_brick, list_balloom, player);
+            bomb.renderBomb(root, list_wall, list_brick, list_balloom,list_oneal, player);
             Timeline timer = new Timeline();
             timer.setCycleCount(0);
             timer.getKeyFrames().add(new KeyFrame(Duration.millis(2850),(ActionEvent event) -> {
@@ -217,6 +217,11 @@ public class Main extends Application {
     public boolean checkAlive() {
         for(int i = 0; i < list_balloom.size(); i++) {
             if(list_balloom.get(i).overLaps(player.get(0))) { player.get(0).setAlive(false);
+                return false;
+            }
+        }
+        for(int i = 0; i < list_oneal.size(); i++) {
+            if(list_oneal.get(i).overLaps(player.get(0))) { player.get(0).setAlive(false);
                 return false;
             }
         }

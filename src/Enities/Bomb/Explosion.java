@@ -3,6 +3,7 @@ package Enities.Bomb;
 import Enities.Convention;
 import Enities.Enity;
 import Enities.Mod.Balloom;
+import Enities.Mod.Oneal;
 import Enities.Player.Player;
 import Enities.ti.Brick;
 import Enities.ti.Wall;
@@ -106,7 +107,7 @@ public class Explosion{
         }
     }
 
-    public void  renderExplosion(Group root, List<Wall> wallList, List<Brick> brickList, List<Balloom> balloomList, List<Player> players) {
+    public void  renderExplosion(Group root, List<Wall> wallList, List<Brick> brickList, List<Balloom> balloomList, List<Oneal> oneals, List<Player> players) {
         setListofImage();
         setExplosion();
         if(flame_center.overLaps(players.get(0))) {
@@ -121,6 +122,12 @@ public class Explosion{
                 if(listofFlame_left.get(i).overLaps(balloomList.get(j))) {
                     balloomList.get(j).setAlive(false);
                     balloomList.remove(j);
+                }
+            }
+            for(int j = 0; j < oneals.size(); j++) {
+                if(listofFlame_left.get(i).overLaps(oneals.get(j))) {
+                    oneals.get(j).setAlive(false);
+                    oneals.remove(j);
                 }
             }
             for(int j = 0; j < wallList.size(); j++) {
@@ -158,6 +165,12 @@ public class Explosion{
                     balloomList.remove(j);
                 }
             }
+            for(int j = 0; j < oneals.size(); j++) {
+                if(listofFlame_rigth.get(i).overLaps(oneals.get(j))) {
+                    oneals.get(j).setAlive(false);
+                    oneals.remove(j);
+                }
+            }
             for(int j = 0; j < wallList.size(); j++) {
                 if(listofFlame_rigth.get(i).overLaps(wallList.get(j))) {
                     kt = 1;
@@ -185,13 +198,16 @@ public class Explosion{
             if(listofFlame_up.get(i).overLaps(players.get(0))) {
                 players.get(0).setAlive(false);
             }
-            if(listofFlame_left.get(i).overLaps(players.get(0))) {
-                players.get(0).setAlive(false);
-            }
             for(int j = 0; j < balloomList.size(); j++) {
                 if(listofFlame_up.get(i).overLaps(balloomList.get(j))) {
                     balloomList.get(j).setAlive(false);
                     balloomList.remove(j);
+                }
+            }
+            for(int j = 0; j < oneals.size(); j++) {
+                if(listofFlame_up.get(i).overLaps(oneals.get(j))) {
+                    oneals.get(j).setAlive(false);
+                    oneals.remove(j);
                 }
             }
             for(int j = 0; j < wallList.size(); j++) {
@@ -227,6 +243,12 @@ public class Explosion{
                 if(listofFlame_Down.get(i).overLaps(balloomList.get(j))) {
                     balloomList.get(j).setAlive(false);
                     balloomList.remove(j);
+                }
+            }
+            for(int j = 0; j < oneals.size(); j++) {
+                if(listofFlame_Down.get(i).overLaps(oneals.get(j))) {
+                    oneals.get(j).setAlive(false);
+                    oneals.remove(j);
                 }
             }
             for(int j = 0; j < wallList.size(); j++) {

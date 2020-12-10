@@ -3,6 +3,7 @@ package Enities.Bomb;
 import Enities.Convention;
 import Enities.Enity;
 import Enities.Mod.Balloom;
+import Enities.Mod.Oneal;
 import Enities.Player.Player;
 import Enities.Sound;
 import Enities.ti.Brick;
@@ -64,7 +65,7 @@ public class Bomb extends Enity {
         this.rectangle.y = y;
     }
 
-    public void renderBomb(Group root, List<Wall> wallList, List<Brick> brickList, List<Balloom> balloomList, List<Player> players) {
+    public void renderBomb(Group root, List<Wall> wallList, List<Brick> brickList, List<Balloom> balloomList, List<Oneal> oneals, List<Player> players) {
         try {
             Image image = new Image(new FileInputStream(convention.BOMB_PATH));
             ImageView imageView = new ImageView(image);
@@ -114,7 +115,7 @@ public class Bomb extends Enity {
                 imageView.setX(1000);
                 imageView.setY(1000);
                 Explosion explosion = new Explosion(getX(),getY(),length_flame);
-                explosion.renderExplosion(root, wallList, brickList, balloomList, players);
+                explosion.renderExplosion(root, wallList, brickList, balloomList,oneals, players);
             }
         }));
         timer.play();

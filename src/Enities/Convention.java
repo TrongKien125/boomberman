@@ -63,6 +63,8 @@ public class Convention {
     public static String Oneal_left = "image/oneal_left.png";
     public static String Oneal_left1 = "image/oneal_left1.png";
     public static String Oneal_left2 = "image/oneal_left2.png";
+    public static String Oneal_dead = "image/oneal_dead.png";
+    public static String Balloom_dead ="image/balloom_dead.png";
     public static double PLAYER_WIDTH = 30;
     public static double PLAYER_HEIGHT = 40;
     public static double PLAYER_SPEED1 = 10;

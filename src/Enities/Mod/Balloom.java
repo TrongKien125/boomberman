@@ -105,45 +105,23 @@ public class Balloom extends Mob{
     }
 
     public void afterKill() {
-        /*Timeline timer = new Timeline();
-        timer.setCycleCount(Timeline.INDEFINITE);
-        timer.getKeyFrames().add(new KeyFrame(Duration.millis(50),(ActionEvent event) -> {
-            Image image1 =null;
-            try {
-                image1 = new Image(new FileInputStream(this.imgpath));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            imageView.setImage(image1);
-        }));
+        Timeline timer = new Timeline();
+        timer.setCycleCount(0);
         timer.getKeyFrames().add(new KeyFrame(Duration.millis(100),(ActionEvent event) -> {
             Image image1 =null;
             try {
-                image1 = new Image(new FileInputStream(this.imgpath));
+                image1 = new Image(new FileInputStream(convention.Balloom_dead));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
             imageView.setImage(image1);
         }));
-        timer.getKeyFrames().add(new KeyFrame(Duration.millis(150),(ActionEvent event) -> {
-            Image image1 =null;
-            try {
-                image1 = new Image(new FileInputStream(this.imgpath));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            imageView.setImage(image1);
-
-        }));
-
         timer.getKeyFrames().add(new KeyFrame(Duration.millis(200),(ActionEvent event) -> {
             imageView.setY(1000);
             imageView.setX(1000);
-
         }));
-        timer.play();*/
-        imageView.setY(1000);
-        imageView.setX(1000);
+        timer.play();
+
     }
 
     public boolean canMove(List<Wall> list_wall , List<Brick> list_brick, List<Bomb> bombList, Portal portal) {

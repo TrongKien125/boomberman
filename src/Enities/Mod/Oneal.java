@@ -88,10 +88,12 @@ public class Oneal extends Mob{
             changeSpeed.setCycleCount(Timeline.INDEFINITE);
             tranfer(list_wall, list_brick, bombList, portal);
             changeSpeed.getKeyFrames().add(new KeyFrame(Duration.millis(5000),(ActionEvent event) -> {
-                Random rand = new Random();
-                time = (rand.nextInt(6) +1) * 50;
-                tranfer(list_wall, list_brick, bombList, portal);
-                System.out.println(time);
+                if (alive) {
+                    Random rand = new Random();
+                    time = (rand.nextInt(6) + 1) * 50;
+                    tranfer(list_wall, list_brick, bombList, portal);
+                    System.out.println(time);
+                } else changeSpeed.stop();
             }));
             changeSpeed.play();
 
@@ -131,45 +133,20 @@ public class Oneal extends Mob{
         changeSpeed.play();
     }
     public void afterKill() {
-        /*Timeline timer = new Timeline();
-        timer.setCycleCount(Timeline.INDEFINITE);
-        timer.getKeyFrames().add(new KeyFrame(Duration.millis(50),(ActionEvent event) -> {
-            Image image1 =null;
-            try {
-                image1 = new Image(new FileInputStream(this.imgpath));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            imageView.setImage(image1);
-        }));
-        timer.getKeyFrames().add(new KeyFrame(Duration.millis(100),(ActionEvent event) -> {
-            Image image1 =null;
-            try {
-                image1 = new Image(new FileInputStream(this.imgpath));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            imageView.setImage(image1);
-        }));
-        timer.getKeyFrames().add(new KeyFrame(Duration.millis(150),(ActionEvent event) -> {
-            Image image1 =null;
-            try {
-                image1 = new Image(new FileInputStream(this.imgpath));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            imageView.setImage(image1);
-
-        }));
-
-        timer.getKeyFrames().add(new KeyFrame(Duration.millis(200),(ActionEvent event) -> {
+        Image image1 =null;
+        try {
+            image1 = new Image(new FileInputStream(convention.Oneal_dead));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        imageView.setImage(image1);
+        Timeline timer = new Timeline();
+        timer.setCycleCount(0);
+        timer.getKeyFrames().add(new KeyFrame(Duration.millis(300),(ActionEvent event) -> {
             imageView.setY(1000);
             imageView.setX(1000);
-
         }));
-        timer.play();*/
-        imageView.setY(1000);
-        imageView.setX(1000);
+        timer.play();
     }
 
     public boolean canMove(List<Wall> list_wall , List<Brick> list_brick, List<Bomb> bombList, Portal portal) {
@@ -253,7 +230,7 @@ public class Oneal extends Mob{
                 this.imgpath = convention.Oneal_left2;
             }
         }
-        step = (step+1)%8;
+        step = (step+1)%40;
         if(step==0) {
             Random rand = new Random();
             setArrow(rand.nextInt(4));
