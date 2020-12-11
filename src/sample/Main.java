@@ -293,9 +293,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        /*Media sound = new Media(new File(sound1.SetBomb).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();*/
+        /*Media sound_m = new Media(new File(sound1.Sound_1).toURI().toString());
+        MediaPlayer mediaPlayer_m = new MediaPlayer(sound_m);
+        mediaPlayer_m.play();*/
         LevelUP();
         Timeline timer = new Timeline();
         timer.setCycleCount(Timeline.INDEFINITE);

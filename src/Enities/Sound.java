@@ -6,4 +6,5 @@ public class Sound {
     public static final String PowerUp= "Sound/Powerup.wav";
     public static final String LevelUp= "Sound/win.wav";
     public static final String SetBomb= "Sound/datboom.wav";
+    public static final String Sound_1= "Sound/soound1.mp3";
 }
